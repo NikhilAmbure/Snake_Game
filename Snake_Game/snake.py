@@ -20,11 +20,11 @@ screen_height = 600
 Game_Window = pygame.display.set_mode((screen_width, screen_height))
 
 # Background image
-bgimage = pygame.image.load('snake.webp')
+bgimage = pygame.image.load('Assets/snake.webp')
 bgimage = pygame.transform.scale(bgimage, (screen_width, screen_height)).convert_alpha()
 
 # Game Title
-pygame.display.set_caption("SnakesWithGodThor")
+pygame.display.set_caption("SnakesWithNikhil")
 pygame.display.update()
 clock = pygame.time.Clock()
 font = pygame.font.SysFont(None, 55)
@@ -54,7 +54,7 @@ def welcome():
                 exit_game = True
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    pygame.mixer.music.load('back.mp3')
+                    pygame.mixer.music.load('Audio/back.mp3')
                     pygame.mixer.music.play()
                     gameloop()
 
@@ -66,11 +66,11 @@ def welcome():
 def gameloop():
     # reads highscore
     # Check if highscore file exist - bug
-    if (not os.path.exists("Highscore.txt")):
-        with open("Highscore.txt", "w") as f:
+    if (not os.path.exists("Highscore File/Highscore.txt")):
+        with open("Highscore File/Highscore.txt", "w") as f:
             f.write("0")
 
-    with open("Highscore.txt", "r") as f:
+    with open("Highscore File/Highscore.txt", "r") as f:
         highscore = f.read()
 
     # Game specific variables
@@ -95,7 +95,7 @@ def gameloop():
 
         if game_over:
             # highscore before
-            with open("Highscore.txt", "w") as f:
+            with open("Highscore File/Highscore.txt", "w") as f:
                 f.write(str(highscore))
             Game_Window.fill(white)
             text_screen("Game Over! Press Enter To Continue", red, 100, 250)
@@ -171,12 +171,12 @@ def gameloop():
             # Game Over when snake collides itself
             if head in snk_list[:-1]:
                 game_over = True
-                pygame.mixer.music.load('landslide.mp3')
+                pygame.mixer.music.load('Audio/landslide.mp3')
                 pygame.mixer.music.play()
 
             # Game Over!
             if snake_x < 0 or snake_x>screen_width or snake_y < 0 or snake_y>screen_height:
-                pygame.mixer.music.load('landslide.mp3')
+                pygame.mixer.music.load('Audio/landslide.mp3')
                 pygame.mixer.music.play()
                 game_over = True
                 # print("Game Over!")

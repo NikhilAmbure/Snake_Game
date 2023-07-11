@@ -1,5 +1,4 @@
 # Snake_Game
-Let's Explain how code actually works.
 
 This code is an example of a simple snake game implemented using the Pygame library in Python. Let's go through it step by step:
 
